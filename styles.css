@@ -682,18 +682,24 @@ h1 em {
 }
 
 .visual-label {
-  position: absolute;
-  inset: 1rem 1rem auto;
-  z-index: 5;
-  padding: .8rem 1rem;
+  position: relative;
+  z-index: 1;
+  min-height: 42px;
+  padding: .7rem 1rem;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  color: var(--ink);
-  background: var(--acid);
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  background: #101216;
   font-family: var(--mono);
   font-size: .64rem;
   pointer-events: none;
+}
+
+.visual-label span:first-child {
+  color: var(--acid);
 }
 
 .timeline {
@@ -767,6 +773,10 @@ h1 em {
 .timeline-item .xyz-list li {
   padding-top: 0;
   padding-bottom: 1rem;
+}
+
+.timeline-item .xyz-list li:first-child {
+  border-top: 0;
 }
 
 .timeline-item .xyz-list li + li {
@@ -1081,7 +1091,8 @@ footer div {
   }
 
   .visual-label {
-    inset: .75rem .75rem auto;
+    min-height: 38px;
+    padding: .6rem .75rem;
     font-size: .56rem;
   }
 
