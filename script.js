@@ -1,10 +1,15 @@
 const command = "portfolio --inspect";
 const commandNode = document.querySelector("#typed-command");
 const outputNode = document.querySelector("#terminal-output");
-const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const root = document.documentElement;
+
+root.classList.add("motion-enabled");
+requestAnimationFrame(() => {
+  requestAnimationFrame(() => root.classList.add("is-loaded"));
+});
 
 function runTerminal() {
-  if (reduceMotion || !commandNode) {
+  if (!commandNode) {
     outputNode?.classList.add("visible");
     return;
   }
@@ -32,5 +37,27 @@ const observer = new IntersectionObserver(
 );
 
 document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+
+const staggerGroups = [
+  ".xyz-list",
+  ".impact-list",
+  ".tag-row",
+  ".stack-grid"
+];
+
+staggerGroups.forEach((selector) => {
+  document.querySelectorAll(selector).forEach((group) => {
+    Array.from(group.children).forEach((element, index) => {
+      element.classList.add("micro-reveal");
+      element.style.setProperty("--reveal-delay", `${Math.min(index * 70, 350)}ms`);
+      observer.observe(element);
+    });
+  });
+});
+
+document.querySelectorAll(".timeline-item").forEach((element, index) => {
+  element.style.setProperty("--reveal-delay", `${index * 90}ms`);
+});
+
 document.querySelector("#year").textContent = new Date().getFullYear();
 runTerminal();
