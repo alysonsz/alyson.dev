@@ -524,6 +524,66 @@ h1 em {
   border: 1px solid var(--line);
 }
 
+.project-intro {
+  margin: 0 clamp(1.25rem, 4vw, 4.5rem) 1.5rem;
+  display: grid;
+  grid-template-columns: minmax(160px, .38fr) 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.project-intro p:last-child {
+  max-width: 780px;
+  margin: 0;
+  color: #aeadA7;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  line-height: 1.7;
+}
+
+.project-grid {
+  margin: 0 clamp(1.25rem, 4vw, 4.5rem) clamp(5rem, 9vw, 9rem);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.project-card {
+  min-width: 0;
+  border: 1px solid var(--line);
+  background: linear-gradient(145deg, rgba(185, 255, 55, .035), transparent 46%), var(--surface);
+  transition: border-color 220ms ease, background-color 220ms ease;
+}
+
+.project-card:hover,
+.project-card:focus-within {
+  border-color: rgba(185, 255, 55, .4);
+}
+
+.project-card-head {
+  min-height: 48px;
+  padding: .85rem 1.3rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--line);
+  color: #989b91;
+  font: .62rem var(--mono);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.project-card-body { padding: clamp(1.5rem, 3vw, 3rem); }
+.project-kicker, .architecture-label { color: var(--acid); font: .65rem var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.project-card h3 { margin: .5rem 0 1.5rem; display: flex; justify-content: space-between; font-size: clamp(3.5rem, 6vw, 6rem); font-weight: 500; letter-spacing: -.07em; line-height: 1; }
+.project-arrow { color: var(--acid); font: 1.5rem var(--mono); align-self: start; }
+.project-lead { max-width: 35rem; min-height: 5.5em; color: var(--paper); font-size: clamp(1.05rem, 1.45vw, 1.3rem); line-height: 1.55; }
+.architecture-flow { display: flex; flex-wrap: wrap; align-items: center; gap: .55rem; padding: 1.1rem 0; border-block: 1px solid var(--line); color: #c7c8be; font: .68rem var(--mono); line-height: 1.6; }
+.architecture-flow b { color: var(--acid); font-weight: 400; }
+.architecture-label { margin: 1.6rem 0 .5rem; }
+.architecture-points { min-height: 17rem; margin: 0 0 1.5rem; padding-left: 1.1rem; color: #a6a89e; font-size: .82rem; line-height: 1.65; }
+.architecture-points li { padding: .45rem 0; }
+.architecture-points li::marker { color: var(--acid); }
+
 .case-topline {
   min-height: 52px;
   padding: 0 1.25rem;
@@ -655,6 +715,19 @@ h1 em {
   flex-wrap: wrap;
   gap: 1.5rem;
   margin-top: 2rem;
+}
+
+.private-badge {
+  display: inline-block;
+  margin-left: .5rem;
+  padding: .16rem .35rem;
+  border: 1px solid rgba(236, 235, 228, .32);
+  border-radius: 3px;
+  color: #b9bbb1;
+  font: .55rem var(--mono);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  vertical-align: middle;
 }
 
 .text-links a,
@@ -935,7 +1008,7 @@ footer div {
   gap: 1.4rem;
 }
 
-.reveal {
+.motion-enabled .reveal {
   opacity: 0;
   transform: translateY(28px);
   transition:
@@ -944,7 +1017,7 @@ footer div {
   transition-delay: var(--reveal-delay, 0ms);
 }
 
-.reveal.is-visible {
+.motion-enabled .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -960,6 +1033,9 @@ footer div {
    ========================= */
 
 @media (max-width: 900px) {
+  .project-intro { grid-template-columns: 1fr; gap: .5rem; }
+  .project-grid { grid-template-columns: 1fr; }
+  .project-lead, .architecture-points { min-height: 0; }
   .topbar {
     width: calc(100% - 2rem);
     min-height: 60px;
@@ -1033,6 +1109,8 @@ footer div {
    ========================= */
 
 @media (max-width: 600px) {
+  .project-intro, .project-grid { margin-inline: 1.25rem; }
+  .project-card-head { flex-direction: column; gap: .3rem; }
   .topbar {
     top: .75rem;
     width: calc(100% - 1.5rem);

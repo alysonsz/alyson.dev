@@ -3,6 +3,7 @@ const commandNode = document.querySelector("#typed-command");
 const outputNode = document.querySelector("#terminal-output");
 const root = document.documentElement;
 
+const supportsObserver = "IntersectionObserver" in window;
 root.classList.add("motion-enabled");
 requestAnimationFrame(() => {
   requestAnimationFrame(() => root.classList.add("is-loaded"));
@@ -26,7 +27,7 @@ function runTerminal() {
   }, 70);
 }
 
-const observer = new IntersectionObserver(
+const observer = supportsObserver ? new IntersectionObserver(
   (entries) => entries.forEach((entry) => {
     if (entry.isIntersecting) {
       entry.target.classList.add("is-visible");
@@ -34,9 +35,12 @@ const observer = new IntersectionObserver(
     }
   }),
   { threshold: 0.12 }
-);
+): null;
 
-document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+document.querySelectorAll(".reveal").forEach((element) => {
+  if (observer) observer.observe(element);
+  else element.classList.add("is-visible");
+});
 
 const staggerGroups = [
   ".xyz-list",
@@ -48,9 +52,11 @@ const staggerGroups = [
 staggerGroups.forEach((selector) => {
   document.querySelectorAll(selector).forEach((group) => {
     Array.from(group.children).forEach((element, index) => {
-      element.classList.add("micro-reveal");
-      element.style.setProperty("--reveal-delay", `${Math.min(index * 70, 350)}ms`);
-      observer.observe(element);
+      if (observer) {
+        element.classList.add("micro-reveal");
+        element.style.setProperty("--reveal-delay", `${Math.min(index * 70, 350)}ms`);
+        observer.observe(element);
+      }
     });
   });
 });
