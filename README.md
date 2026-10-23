@@ -81,6 +81,8 @@ Desenvolvimento de integrações omnichannel e otimizações de performance para
 
 Trabalhei na integração de catálogo, estoque e pedidos com **Amazon, Mercado Livre e Shopee**, além de automações relacionadas a metadados, Book Info e pricing.
 
+Em um catálogo com **mais de 20.000 produtos**, reduzi o intervalo de varredura de **10 para 1 minuto** ao substituir verificações integrais por identificação de novos itens. A mudança evitou reprocessamento desnecessário e agilizou a publicação em lote nos e-commerces.
+
 [Visitar Escariz](https://www.escariz.com.br)
 
 ---
