@@ -53,11 +53,11 @@ No Nucleus, trabalhei desde a infraestrutura e integrações até a experiência
 
 `< 200 ms` — latência em uma integração crítica após otimização da resolução de rede
 
-`500+ E2E` — cenários automatizados cobrindo fluxos críticos, integrações e falhas
+`Web + mobile` — experiências conectadas à mesma API e aos mesmos dados financeiros
 
 `Open Finance` — dados de múltiplas instituições consolidados em uma única experiência
 
-**[Visitar o produto](https://nucleusbrasil.com.br)** · **[Ver engenharia](https://github.com/alysonsz/finance-nucleus-backend)**
+**[Visitar o produto](https://nucleusbrasil.com.br)**
 
 ---
 
@@ -124,3 +124,14 @@ Estou aberto a oportunidades em **engenharia de software** e a conversas sobre p
 **[GitHub](https://github.com/alysonsz)** · **[LinkedIn](https://www.linkedin.com/in/alyson-carregosa/)**
 
 <sub>Feito entre APIs, café e Sergipe.</sub>
+
+
+## Portfólio e currículo
+
+Interface estática em HTML, CSS e JavaScript, com paleta predominantemente preta, tokens em `:root` e blocos reutilizáveis de projeto, tecnologias e detalhes. Não exige build. Os detalhes usam elementos nativos `details`/`summary` e funcionam sem JavaScript.
+
+O Nucleus é apresentado em quatro frentes: aplicação web, aplicativo mobile, backend e landing page. A aplicação web tem implementação local em Next.js/TypeScript, painel financeiro, Terra, Celcoin, Stripe e BFF; homologação e publicação permanecem pendentes conforme a documentação do projeto.
+
+Prévia local: `python -m http.server 4173 --bind 127.0.0.1`, abrindo `http://127.0.0.1:4173`.
+
+O currículo servido pelo site fica em `assets/curriculo-alyson-carregosa.pdf`. A cópia para entrega está em `output/pdf/AlysonCarregosa-atualizado.pdf`. Para regenerar: instale `reportlab` e execute `python scripts/build_resume.py`. Os PDFs originais do Desktop não são alterados.
